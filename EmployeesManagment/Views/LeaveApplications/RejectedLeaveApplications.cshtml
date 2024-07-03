@@ -1,0 +1,97 @@
+﻿@model IEnumerable<EmployeesManagment.Models.LeaveApplication>
+@{
+    ViewData["Title"] = "RejectedLeaveApplications";
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Rejected Leave Application List</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Employee)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NoOfDays)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StartDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EndDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Duration)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.leaveType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Attachment)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Employee.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NoOfDays)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Duration.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.leaveType.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Attachment)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+
+                        <td style="border-bottom: 10px solid Red; padding-bottom: 10px;">
+                            @Html.DisplayFor(modelItem => item.Status.Description)
+                        </td>
+
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Actions
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width: 100px;">
+                                    <a class="dropdown-item btn btn-primary" asp-action="Details" asp-route-id="@item.Id">
+                                        <i class="fas fa-eye" style="color: dodgerblue;">  View </i>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
